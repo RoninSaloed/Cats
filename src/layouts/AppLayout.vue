@@ -1,13 +1,15 @@
 <template>
   <div
     :class="{
-      'min-h-screen': true,
+      'min-h-screen flex flex-col': true,
       'bg-white': !isDark,
       'bg-[#202020]': isDark,
     }"
   >
     <sc-header />
-    <div class="px-[72px]"><slot /></div>
+    <div class="flex-1 px-[72px]">
+      <slot />
+    </div>
     <Footer />
   </div>
 </template>

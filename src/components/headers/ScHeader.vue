@@ -7,14 +7,26 @@
     }"
   >
     <LogoIcon />
-    <div class="flex">
+    <div class="flex relative">
       <ScThemeSwitcher />
-      <div
+      <button
+        @click="handleOpen()"
         v-if="userName"
         class="w-[56px] ml-[14px] h-[56px] rounded-full flex justify-center items-center text-white bg-[#636AF2] uppercase font-medium text-[31px]"
       >
         {{ userName }}
-      </div>
+      </button>
+      <button
+        @click="handleLogout()"
+        v-show="isOpen"
+        :class="{
+          'text-base w-[148px] py-3 text-left pl-4  absolute -bottom-[75px] rounded-md': true,
+          'text-[#434343] bg-[#EBECFF]': !isDark,
+          'text-[#FFFFFF] bg-[#313247]': isDark,
+        }"
+      >
+        Logout
+      </button>
     </div>
   </header>
 </template>
@@ -25,7 +37,22 @@ import ScThemeSwitcher from "../buttonts/ScThemeSwitcher.vue";
 import LogoIcon from "../shared/LogoIcon.vue";
 
 import { useAuth } from "../../composables/useAuth";
-
+import { ref } from "vue";
+import { removeItemFromStorage } from "../../helpers/storage";
+import { ACCESS_TOKEN_KEY } from "../../shared/constants";
+import { useRouter } from "vue-router";
+import { CommonDomainRoutes } from "../../router/routes/auth-domain";
+const router = useRouter();
 const isDark = useDark();
 const { userName } = useAuth();
+const isOpen = ref();
+const handleOpen = () => {
+  isOpen.value = !isOpen.value;
+};
+
+const handleLogout = () => {
+  removeItemFromStorage(ACCESS_TOKEN_KEY);
+  isOpen.value = !isOpen.value;
+  router.push({ name: CommonDomainRoutes.N_LOGIN });
+};
 </script>

@@ -18,6 +18,11 @@ class AuthDomain {
       name: CommonDomainRoutes.N_HOME,
       component: () => import("../../pages/main-domain/MainPage.vue"),
     },
+    {
+      path: CommonDomainRoutes.ABSOLUTE_FACT,
+      name: CommonDomainRoutes.N_FACT,
+      component: () => import("../../pages/main-domain/FactPage.vue"),
+    },
   ];
   buildRoutes(): RouteRecordRaw[] {
     return this.config;

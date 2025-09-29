@@ -18,7 +18,7 @@
         <OpenArrowIcon />
       </button>
     </div>
-    <div v-show="isOpen">
+    <div v-show="isOpen" class="absolute bg">
       <button
         v-for="(item, idx) of items"
         :key="idx"

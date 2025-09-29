@@ -8,7 +8,7 @@
       <div class="flex flex-col justify-center items-center">
         <div
           :class="{
-            'text-center mb-12 text-xl font-bold': true,
+            'text-center mb-12 text-xl font-bold ': true,
             'text-[#232323]': !isDark,
             'text-[#DCDCDC]': isDark,
           }"

@@ -6,6 +6,6 @@ export const AuthSchema = zod.object({
     .min(3, { message: "Too short" })
     .max(15, { message: "Too long" })
     .regex(/^[A-Za-z]+$/, {
-      message: "Only latin",
+      message: "only latin characters are allowed",
     }),
 });
