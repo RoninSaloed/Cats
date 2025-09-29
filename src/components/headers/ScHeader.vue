@@ -1,7 +1,7 @@
 <template>
-  <div
+  <header
     :class="{
-      'w-full  h-[95px] flex items-center px-[72px] justify-between': true,
+      'w-full h-[95px] flex items-center px-[72px] justify-between': true,
       'bg-[#EBECFF]': !isDark,
       'bg-[#1A1B43]': isDark,
     }"
@@ -16,7 +16,7 @@
         {{ userName }}
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">
