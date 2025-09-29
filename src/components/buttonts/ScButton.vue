@@ -4,8 +4,9 @@
     @click="handleClick()"
     :name="label"
     :disabled="isDisabled"
+    class="bg-[#6E72EC] font-semibold text-lg text-white rounded-md"
   >
-    {{ label }}
+    <div class="px-[87.5px] py-[15px]">{{ label }}</div>
   </button>
 </template>
 
