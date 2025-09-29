@@ -1,10 +1,10 @@
 <template>
-  <div
-    :class="{
-      'flex justify-center items-center': true,
-    }"
-  >
-    <form @submit.prevent="handleClick" class="w-full max-w-[410px]">
+  <div class="flex justify-center items-center mt-[116px]">
+    <form
+      v-if="!loading"
+      @submit.prevent="handleClick"
+      class="w-full max-w-[410px]"
+    >
       <div class="flex flex-col justify-center items-center">
         <div
           :class="{
@@ -31,17 +31,29 @@
         <ScButton type="submit" label="Log in" />
       </div>
     </form>
+
+    <div v-if="loading" class="flex justify-center items-center">
+      <div
+        class="w-16 h-16 border-4 border-t-purple-500 border-gray-200 rounded-full animate-spin"
+      ></div>
+    </div>
   </div>
 </template>
+
 <script setup lang="ts">
+import { ref } from "vue";
 import ScInput from "../../components/inputs/ScInput.vue";
+import ScButton from "../../components/buttonts/ScButton.vue";
 import { useField, useForm } from "vee-validate";
 import * as zod from "zod";
 import { AuthSchema } from "../../schemas/auth.schema";
 import { toTypedSchema } from "@vee-validate/zod";
-import { ref } from "vue";
-import ScButton from "../../components/buttonts/ScButton.vue";
 import { useDark } from "@vueuse/core";
+
+import { useRouter } from "vue-router";
+import { CommonDomainRoutes } from "../../router/routes/auth-domain";
+import { useAuth } from "../../composables/useAuth";
+
 type InputTypes = {
   name: string;
   placeholder: string;
@@ -49,9 +61,13 @@ type InputTypes = {
   value: string;
 };
 
-const isDark = useDark();
-
 type FormType = zod.infer<typeof AuthSchema>;
+const { setToken } = useAuth();
+
+const isDark = useDark();
+const router = useRouter();
+
+const loading = ref(false);
 
 const loginInputs: InputTypes[] = [
   {
@@ -62,17 +78,20 @@ const loginInputs: InputTypes[] = [
   },
 ];
 
-const { values, handleSubmit, errors, meta } = useForm({
-  initialValues: {
-    name: "",
-  },
+const { handleSubmit, errors, meta } = useForm({
+  initialValues: { name: "" },
   validationSchema: toTypedSchema(AuthSchema),
 });
+
 const { value: name } = useField<string>("name");
-const formFields = ref({
-  name,
-});
-const handleClick = handleSubmit((values) => {
-  console.log(values);
+const formFields = ref({ name });
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const handleClick = handleSubmit(async (values) => {
+  loading.value = true;
+  await sleep(5000);
+  setToken(values.name);
+  router.push({ name: CommonDomainRoutes.N_HOME });
 });
 </script>

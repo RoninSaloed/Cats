@@ -1,9 +1,13 @@
 <template>
   <div
-    :class="{ 'h-screen': true, 'bg-white': !isDark, 'bg-[#202020]': isDark }"
+    :class="{
+      'h-screen ': true,
+      'bg-white': !isDark,
+      'bg-[#202020]': isDark,
+    }"
   >
-    <sc-header class="mb-[116px]" />
-    <div><slot /></div>
+    <sc-header />
+    <div class="px-[72px]"><slot /></div>
   </div>
 </template>
 
