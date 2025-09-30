@@ -2,7 +2,7 @@
   <div>
     <div
       :class="{
-        'text-[56px]  font-bold text-center mt-[57px] mb-[32px]': true,
+        'md:text-[56px]  text-3xl font-bold text-center mt-[57px] mb-[32px]': true,
         'text-[#232323]': !isDark,
         'text-[#DCDCDC]': isDark,
       }"

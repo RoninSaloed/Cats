@@ -33,9 +33,9 @@
     </form>
 
     <div v-if="loading" class="flex justify-center items-center">
-      <div
-        class="w-16 h-16 border-4 border-t-purple-500 border-gray-200 rounded-full animate-spin"
-      ></div>
+      <div class="absolute top-1/2 -translate-y-1/2">
+        <ScLoader />
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +53,7 @@ import { useDark } from "@vueuse/core";
 import { useRouter } from "vue-router";
 import { CommonDomainRoutes } from "../../router/routes/auth-domain";
 import { useAuth } from "../../composables/useAuth";
+import ScLoader from "../../components/loader/ScLoader.vue";
 
 type InputTypes = {
   name: string;

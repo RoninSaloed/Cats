@@ -6,7 +6,7 @@
     :disabled="isDisabled"
     class="bg-[#6E72EC] font-semibold text-lg text-white rounded-md"
   >
-    <div class="px-[87.5px] py-[15px]">{{ label }}</div>
+    <div class="px-[87.5px] py-[15px] text-nowrap">{{ label }}</div>
   </button>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
   <header
     :class="{
-      'w-full h-[95px] flex items-center px-[72px] justify-between': true,
+      'w-full py-[12.5px] flex flex-wrap items-center px-[72px] md:justify-between justify-center ': true,
       'bg-[#EBECFF]': !isDark,
       'bg-[#1A1B43]': isDark,
     }"
   >
-    <LogoIcon />
+    <LogoIcon class="pr-2" />
     <div class="flex relative">
       <ScThemeSwitcher />
       <button
