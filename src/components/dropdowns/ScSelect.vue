@@ -2,7 +2,7 @@
   <div class="">
     <div
       :class="{
-        'w-[300px] py-[12px] pl-[10px] rounded-md mb-[6px] relative': true,
+        'md:w-[300px] w-[240px] py-[12px] pl-[10px] rounded-md mb-[6px] relative': true,
         'bg-[#EBECFF] text-[#434343]': !isDark,
         'bg-[#4D4E69] text-[#E2E2E2]': isDark,
       }"
@@ -23,7 +23,7 @@
         v-for="(item, idx) of items"
         :key="idx"
         :class="{
-          'w-[300px] py-[12px] pl-[10px] flex relative': true,
+          'md:w-[300px] w-[240px] py-[12px] pl-[10px] flex relative': true,
           'bg-[#EBECFF]  hover:bg-[#D6D8FF]': !isDark,
           'bg-[#4D4E69] text-[#E2E2E2] hover:bg-[#313247]': isDark,
           'text-[#6E72EC]': item.value === selected.value && !isDark,

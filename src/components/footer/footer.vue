@@ -38,8 +38,8 @@
       <div class="text-[14px] w-full md:w-auto">
         @cats.com inc. All rights reserved.
       </div>
-      <div class="flex relative justify-center md:justify-end w-full md:w-auto">
-        <div class="mr-5">English</div>
+      <div class="flex relative justify-center md:justify-end md:w-auto">
+        <div class="mr-3">English</div>
         <span
           :class="[
             'absolute w-2 h-2 border-r-2 border-b-2 border-white rotate-45 top-1/2 -translate-y-1/2 right-0 md:right-[-10px]',
