@@ -44,14 +44,15 @@ import { useRouter } from "vue-router";
 import { CommonDomainRoutes } from "../../router/routes/auth-domain";
 const router = useRouter();
 const isDark = useDark();
-const { userName } = useAuth();
+const { userName, setToken } = useAuth();
+
 const isOpen = ref();
 const handleOpen = () => {
   isOpen.value = !isOpen.value;
 };
 
 const handleLogout = () => {
-  removeItemFromStorage(ACCESS_TOKEN_KEY);
+  setToken("");
   isOpen.value = !isOpen.value;
   router.push({ name: CommonDomainRoutes.N_LOGIN });
 };
