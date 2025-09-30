@@ -10,7 +10,7 @@
     <div class="flex-1 px-[72px]">
       <slot />
     </div>
-    <Footer />
+    <Footer v-show="userName" />
   </div>
 </template>
 
@@ -18,6 +18,8 @@
 import { useDark } from "@vueuse/core";
 import ScHeader from "../components/headers/ScHeader.vue";
 import Footer from "../components/footer/footer.vue";
+import { useAuth } from "../composables/useAuth";
 
 const isDark = useDark();
+const { userName } = useAuth();
 </script>
